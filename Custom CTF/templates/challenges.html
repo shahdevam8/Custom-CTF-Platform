@@ -1,0 +1,60 @@
+<h2>Challenges</h2>
+<style>
+body {
+    background-color: #0d1117;
+    color: #c9d1d9;
+    font-family: monospace;
+    padding: 40px;
+}
+
+a {
+    color: #58a6ff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+input, button {
+    background: #0d1117;
+    color: #c9d1d9;
+    border: 1px solid #30363d;
+    padding: 8px;
+    margin-top: 5px;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:hover {
+    background: #21262d;
+}
+</style>
+
+{% for c in challenges %}
+<form method="POST" action="/challenges">
+    <b>{{ c[1] }}</b> ({{ c[2] }}) - {{ c[4] }} points<br>
+    <input type="hidden" name="cid" value="{{ c[0] }}">
+    <input type="text" name="flag" placeholder="Enter flag" required>
+    <button type="submit">Submit Flag</button>
+</form>
+<hr>
+{% endfor %}
+
+<a href="/scoreboard">View Scoreboard</a> |
+<a href="/logout">Logout</a>
